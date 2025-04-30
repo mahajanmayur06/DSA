@@ -2,6 +2,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// brute force
+void sortColrs (vector<int> &nums) {
+    sort(nums.begin(), nums.end());
+}
+
+// better
+// 
+void sortColors1(vector<int> &nums) {
+    int count[3] = {0};
+    for (int i : nums)
+        count[i]++;
+    int index = 0;
+    for (int i = 0; i < 3; i++) {
+        while (count[i]--)
+            nums[index++] = i;
+    }
+}
+
+// optimal
+// Dutch National Flag Problem
 void sortColors(vector<int> &nums)
 {
     int low = 0, mid = 0, high = nums.size() - 1;
