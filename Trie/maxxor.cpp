@@ -41,7 +41,8 @@ class Trie {
             if (node->containsNode(opp)) {
                 maxNum |= (1 << x);
                 node = node->getNode(opp);
-            } else {
+            } 
+            else {
                 node = node->getNode(bit);
             }
         }
