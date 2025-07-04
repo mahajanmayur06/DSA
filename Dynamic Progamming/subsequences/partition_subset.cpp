@@ -65,6 +65,24 @@ bool space_optimsation(vector<int>& nums, int target) {
     return dp[target];
 }
 
+bool canPartition(vector<int>& nums) {
+    int n = nums.size();
+    int total = accumulate(nums.begin(), nums.end(), 0);
+    if (total % 2 != 0) return false;
+
+    int target = total / 2;
+    vector<bool> dp(target + 1, false);
+    dp[0] = true;
+
+    for (int i = 0; i < n; i++) {
+        for (int t = target; t >= nums[i]; t--) {
+            dp[t] = dp[t] || dp[t - nums[i]];
+        }
+    }
+
+    return dp[target];
+}
+
 int main()
 {
     vector<int> nums = {2, 4, 5, 1, 3};

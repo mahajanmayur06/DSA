@@ -6,10 +6,6 @@ using namespace std;
 
 int lcs(string str1, string str2) {
     int len1 = str1.size(), len2 = str2.size();
-    if (len1 < len2) {
-        swap(str1, str2);
-        swap(len1, len2);
-    }
     vector<int> dp(len2 + 1, 0);
     for (int i = 1; i <= len1; i++) {
         int prev = 0;
