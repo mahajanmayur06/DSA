@@ -81,6 +81,34 @@ int binary_search(vector<int>& nums) {
     
     return bin.size();
 }
+
+vector<int> printLIS (vector<int>& nums) {
+    int n = nums.size();
+    vector<int> dp(n + 1, 1);
+    int len = 1, lastIndex = 1;
+    vector<int> hash (n + 1, 0);
+    for (int i = 1; i < n; i++) {
+        hash[i] = i;
+        for (int prev = 0; prev < i; prev++) {
+            if (nums[i] > nums[prev] && dp[i] < dp[prev] + 1) {
+                dp[i] = 1 + dp[prev];
+                hash[i] = prev;
+            }
+        }
+        if (dp[i] > len) {
+            lastIndex = i;
+            len = dp[i];
+        }
+    }   
+    vector<int> res;
+    res.push_back(nums[lastIndex]);
+    while (hash[lastIndex] != lastIndex) {
+        lastIndex = hash[lastIndex];
+        res.push_back(nums[lastIndex]);
+    }
+    reverse(res.begin(), res.end());
+    return res;
+}
 int main()
 {
     // vector<int> nums = {10, 9, 2, 5, 3, 7, 101, 38};

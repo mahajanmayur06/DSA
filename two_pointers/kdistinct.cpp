@@ -23,6 +23,6 @@ int findLength (string s, int k) {
 int main() {
     string s = "aaabbccd";
     int k = 2;
-    cout << findLength(s, k) << endl; 
+    cout << findLength(s, k) - findLength(s, k - 1) << endl; 
     return 0;
 }
