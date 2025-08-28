@@ -15,7 +15,7 @@ bool solve(string& s, string& p, int i, int j) {
                 return false;
             }
         }
-        return true;
+        return true; 
     }
     if (dp.count({i, j})) {
         return dp[{i, j}];
